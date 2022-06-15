@@ -143,14 +143,14 @@ function getFileStream(fileKey) {
 	return s3.getObject(downloadParams).createReadStream();
 }
 
-function deleteFile(fileKey) {
+function deleteImage(fileKey) {
 	var params = {
 		Key: fileKey,
 		Bucket: bucketName,
 	   };
 	s3.deleteObject(params, function(err, data) {
 		if (err) console.log(err, err.stack); // an error occurred
-		else     console.log(data);           // successful response
+		else console.log(data);           // successful response
 		/*
 		data = {
 		}
@@ -168,7 +168,8 @@ app.get("/api/s3-images/:key", (req, res) => {
 //deletes an image
 app.get("/api/s3-images/delete/:key", (req, res) => {
 	const key = req.params.key;
-	deleteFile(key);
+	console.log("Image Key: " + key);
+	deleteImage(key);
 });
 
 app.get("/", (req, res) => {
