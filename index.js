@@ -32,7 +32,6 @@ aws.config.update({
 	region: region,
 });
 
-
 const s3 = new aws.S3();
 
 // single resize without Key
